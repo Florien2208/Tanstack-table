@@ -12,6 +12,82 @@ import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
 import { SearchIcon } from "../Icons/Icons";
 
+const myData = [
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  {
+    Device: "Kagitumba",
+    Moisture: 16.01,
+    Temperature: 16.02,
+    Electro: 16.0,
+    Nitrogen: 16.0,
+    Phosphorus: 16.0,
+    PH: 16.0,
+    Battery: 16.0,
+    Status: 16.0,
+    progress4: 16.0,
+  },
+  // Add more objects as needed
+];
+
 const TanStackTable = () => {
   const columnHelper = createColumnHelper();
 
@@ -21,38 +97,48 @@ const TanStackTable = () => {
       cell: (info) => <span>{info.row.index + 1}</span>,
       header: "S.No",
     }),
-    columnHelper.accessor("profile", {
-      cell: (info) => (
-        <img
-          src={info?.getValue()}
-          alt="..."
-          className="rounded-full w-10 h-10 object-cover"
-        />
-      ),
-      header: "Profile",
-    }),
-    columnHelper.accessor("firstName", {
+    columnHelper.accessor("Device", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "First Name",
+      header: "Device Name",
     }),
-    columnHelper.accessor("lastName", {
+    columnHelper.accessor("Moisture", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "Last Name",
+      header: "Soil Moisture",
     }),
-    columnHelper.accessor("age", {
+    columnHelper.accessor("Temperature", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "Age",
+      header: "soil Temperature",
     }),
-    columnHelper.accessor("visits", {
+    columnHelper.accessor("Electro", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "Visits",
+      header: "Electro-conductivity",
     }),
-    columnHelper.accessor("progress", {
+    columnHelper.accessor("Nitrogen", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "Progress",
+      header: "Nitrogen",
+    }),
+    columnHelper.accessor("Phosphorus", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Phosphorus",
+    }),
+    columnHelper.accessor("PH", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "PH",
+    }),
+    columnHelper.accessor("Battery", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Battery level",
+    }),
+    columnHelper.accessor("Status", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Status",
+    }),
+    columnHelper.accessor("progress4", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Progress4",
     }),
   ];
-  const [data] = useState(() => [...USERS]);
+  const [data] = useState(() => [...myData]);
   const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
@@ -67,7 +153,7 @@ const TanStackTable = () => {
   });
 
   return (
-    <div className="p-2 max-w-5xl mx-auto text-white fill-gray-400">
+    <div className="p-2 max-w-5xl bg-white mx-auto text-black fill-gray-400">
       <div className="flex justify-between mb-2">
         <div className="w-full flex items-center gap-1">
           <SearchIcon />
@@ -81,11 +167,14 @@ const TanStackTable = () => {
         <DownloadBtn data={data} fileName={"peoples"} />
       </div>
       <table className="border border-gray-700 w-full text-left">
-        <thead className="bg-indigo-600">
+        <thead className="bg-white">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="capitalize px-3.5 py-2">
+                <th
+                  key={header.id}
+                  className="font-['Inter'] text-xs font-medium text-[#667085] px-3.5  py-2 "
+                >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
@@ -98,14 +187,12 @@ const TanStackTable = () => {
         <tbody>
           {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row, i) => (
-              <tr
-                key={row.id}
-                className={`
-                ${i % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}
-                `}
-              >
+              <tr key={row.id} className="text-[#667085]">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-3.5 py-2">
+                  <td
+                    key={cell.id}
+                    className="px-3.5 font-['Inter'] text-xs py-2"
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -155,7 +242,7 @@ const TanStackTable = () => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
-            className="border p-1 rounded w-16 bg-transparent"
+            className="border p-1 rounded w-16 bg-white"
           />
         </span>
         <select
@@ -163,7 +250,7 @@ const TanStackTable = () => {
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
           }}
-          className="p-2 bg-transparent"
+          className="p-2 bg-white"
         >
           {[10, 20, 30, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>

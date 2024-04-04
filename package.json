@@ -13,6 +13,7 @@
     "@faker-js/faker": "^8.0.2",
     "@tanstack/match-sorter-utils": "^8.8.4",
     "@tanstack/react-table": "^8.9.3",
+    "@tanstack/table-core": "^8.15.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "xlsx": "^0.18.5"

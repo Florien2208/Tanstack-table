@@ -9,6 +9,7 @@ export function createRandomUser() {
     age: faker.datatype.number(40),
     visits: faker.datatype.number(1000),
     progress: faker.datatype.number(100),
+    progress1: faker.datatype.number(100),
   };
 }
 
