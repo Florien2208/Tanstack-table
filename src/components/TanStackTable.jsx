@@ -6,7 +6,6 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { USERS } from "../data";
 import { useState } from "react";
 import DownloadBtn from "./DownloadBtn";
 import DebouncedInput from "./DebouncedInput";
